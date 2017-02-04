@@ -1,7 +1,7 @@
 {
   "name": "buildtemplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Beginnings of a Food and Budget App. #Productivity",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -10,9 +10,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start":"node server/app.js",
+    "start": "node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "twinklefingers",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twinklefingers/budget_app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twinklefingers/budget_app/issues"
+  },
+  "homepage": "https://github.com/twinklefingers/budget_app#readme"
 }

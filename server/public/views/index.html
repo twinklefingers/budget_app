@@ -17,25 +17,30 @@
 
 <body>
     <h1>Budget</h1>
+    <ul>
+        <li>fill out the form completely</li>
+        <li>be sure the date input is filled out with some valid date format</li>
+        <li>the amount field must be a number, can be a decimal number, but should not contain the $ symbol</li>
+    </ul>
 
 
     <!-- **************- INPUT form for PUT request to testbase db -**************-->
-
     <div class="dataInputForm">
         <form id="dataForm">
-          <div class="form-group">
-              <input type="text" id="item_date" name="item_date" class="form-control" placeholder="date" />
-          </div>
             <div class="form-group">
-                <input type="text" id="item_name" name="item_name" class="form-control" placeholder="description"/>
+                <input type="text" id="item_dateForm" name="item_date" class="form-control" placeholder="date" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_amount" name="item_amount" class="form-control" placeholder="amount"/>
+                <input type="text" id="item_nameForm" name="item_name" class="form-control" placeholder="description" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_place" name="item_place" class="form-control" placeholder="place" />
+                <input type="text" id="item_amountForm" name="item_amount" class="form-control" placeholder="amount" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="item_placeForm" name="item_place" class="form-control" placeholder="place" />
             </div>
             <button type="submit" id="submitTestData">Enter</button>
+            <button id="btnTest">Test Button</button>
         </form>
     </div>
 

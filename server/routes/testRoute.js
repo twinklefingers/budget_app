@@ -12,6 +12,9 @@ console.log(testModule.test("\n\n\n\ntestRoute.js: testing module connection"));
 
 
 //AJAX requests:
+
+
+// DELETE FROM DB
 router.delete('/:id', function(req, res) {
     var id = req.params.id;
     pg.connect(connectionString, function(err, client, done) {
@@ -37,6 +40,10 @@ router.delete('/:id', function(req, res) {
     });
 });
 
+
+
+
+// GET FROM DB
 router.get('/', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
@@ -45,7 +52,9 @@ router.get('/', function(req, res) {
         }
 
         //To manage strings and refrences cleaner
-        var queryStringGET = 'SELECT * FROM testbase';
+        // might eventually want to order by DESC so that new items show up at top of table
+        // to_char(item_date,'mm/dd/yy') AS item_date
+        var queryStringGET = 'SELECT * FROM testbase ORDER BY id ASC';
 
         client.query(queryStringGET,
             function(err, result) {
@@ -66,7 +75,7 @@ router.get('/', function(req, res) {
 
 
 
-// POST
+// POST TO DB
 router.post('/', function(req, res) {
     var item = req.body;
 
@@ -102,7 +111,7 @@ router.post('/', function(req, res) {
 
 
 
-// PUT
+// PUT INTO DB, UPDATE
 router.put('/:id', function(req, res) {
     var id = req.params.id;
     var rowValue = req.body;
