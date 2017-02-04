@@ -96,7 +96,7 @@ function postData() {
         data: testdata,
         success: function() {
             console.log('/POST success function ran', testdata);
-            //empty and repopulate #dataTable
+            //empty and repopulate #dataTable and input fields
             var form = document.getElementById("dataForm");
             form.reset();
             $('#dataTable').empty();
