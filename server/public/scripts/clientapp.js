@@ -1,6 +1,12 @@
 $(document).ready(function() {
     getData();
 
+    $('#item_place').keypress(function(e) {
+        if(e.which == 13) {
+            postData();
+        }
+    });
+
     //button listeners
     $('#submitTestData').on("click", postData);
     $('#dataTable').on("click", ".delete", deleteData);
@@ -89,14 +95,18 @@ function postData() {
         url: '/testRoute',
         data: testdata,
         success: function() {
-            console.log('/POST success function ran');
+            console.log('/POST success function ran', testdata);
             //empty and repopulate #dataTable
+            var form = document.getElementById("dataForm");
+            form.reset();
             $('#dataTable').empty();
             getData();
 
         },
         error: function() {
             console.log('/POST didnt work');
+            alert("You must fill out form completely.");
+
         }
 
     });

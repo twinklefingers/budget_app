@@ -1,9 +1,20 @@
 #dataForm {
-  width: 50%;
   padding-bottom: 30px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-#dataTableHead{
+#dataTableHead *{
   font-style: italic;
-  font-weight: bold;
+  background-color: seagreen;
+  color: white;
+  text-transform: uppercase;
+}
+
+
+
+.form-group {
+  background-color: palegreen;
+  display: inline-block;
+  width: 23%;
 }

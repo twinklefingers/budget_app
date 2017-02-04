@@ -3,4 +3,4 @@ Beginnings of a Food and Budget App.
 
 #Do Less Work
 
-Origin BuildTemplate by Drew Wiskus @andrewwiskus
+Original BuildTemplate by Drew Wiskus @andrewwiskus
