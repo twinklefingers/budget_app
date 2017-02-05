@@ -23,14 +23,22 @@ $(document).ready(function() {
 
 // DELETE DATA FROM DB
 function deleteData() {
-    var testdataName = $(this).attr("id");
-    var c = confirm("Are you sure you want to delete this?\n\n" + testdataName);
+  var testdata = {};
+  //goes into data table to grab all data within.
+  var inputs = $(this).parent().children().serializeArray();
+  $.each(inputs, function(i, field) {
+      testdata[field.name] = field.value;
+  });
+
+    var testdataID = $(this).attr("id");
+    var c = confirm("Are you sure you want to delete this?\n\n" + testdata.item_name);
     if (c == true) {
     $.ajax({
         type: 'DELETE',
-        url: '/testRoute/' + testdataName,
+        url: '/testRoute/' + testdataID,
+        data: testdata,
         success: function() {
-            console.log('DELETED ITEM: ID:', testdataName);
+            console.log('DELETED ITEM: ID:', testdataID);
             $('#dataTable').empty();
             getData();
         },
@@ -76,7 +84,7 @@ function updateData() {
             getData();
         },
         error: function() {
-            console.log("error in put");
+            console.log("error in put", error);
         }
     });
   }
