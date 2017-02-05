@@ -1,4 +1,7 @@
 Beginnings of a Food and Budget App.
+
+Tech Used: HTML5, CSS3, Bootstrap, jQuery, Node, Express, Postgres
+
 #Productivity
 
 #Do Less Work

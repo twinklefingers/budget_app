@@ -23,14 +23,14 @@ $(document).ready(function() {
 
 // DELETE DATA FROM DB
 function deleteData() {
-    var testdataID = $(this).attr("id");
-
+    var testdataName = $(this).attr("id");
+    var c = confirm("Are you sure you want to delete this?\n\n" + testdataName);
+    if (c == true) {
     $.ajax({
         type: 'DELETE',
-        url: '/testRoute/' + testdataID,
+        url: '/testRoute/' + testdataName,
         success: function() {
-            console.log('DELETED ITEM: ID:', testdataID);
-
+            console.log('DELETED ITEM: ID:', testdataName);
             $('#dataTable').empty();
             getData();
         },
@@ -38,6 +38,7 @@ function deleteData() {
             console.log("error in delete");
         }
     });
+  }
 }
 
 
@@ -63,7 +64,8 @@ function updateData() {
 
     //finds updateButton's appened id refrencing rowValue.id
     var testdataID = $(this).parent().attr('id');
-
+    var c = confirm("Are you sure you want to update this?\n\n" + testdata.item_name);
+    if (c == true) {
     $.ajax({
         type: 'PUT',
         url: '/testRoute/' + testdataID,
@@ -77,6 +79,7 @@ function updateData() {
             console.log("error in put");
         }
     });
+  }
 }
 
 
@@ -111,9 +114,7 @@ function postData() {
         error: function() {
             console.log('/POST didnt work');
             alert("You must fill out form completely.");
-
         }
-
     });
 }
 
@@ -137,7 +138,6 @@ function getData() {
 
                 var dataTable = ['item_date', 'item_name', 'item_amount', 'item_place'];
                 dataTable.forEach(function(property) {
-
                     var $input = $('<input type="text" id="' + property + '"name="' + property + '" />');
                     $input.val(rowData[property]);
                     $el.append($input);
@@ -174,11 +174,8 @@ function getData() {
 
 
 // CHECK  NUM
-// Display/Quality of Life
 function checkNumInField(theField, numField) {
     if (theField.name == numField) {
-        // var decimal=  /[-+][0-9]+\.[0-9]+$/;
-        // if(inputtxt.value.match(decimal))
         if (theField.value * 0 !== 0) {
             alert("You must input numbers in 'Amount' field");
             location.reload();
