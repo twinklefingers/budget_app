@@ -43,7 +43,7 @@ function deleteData() {
     if (c == true) {
     $.ajax({
         type: 'DELETE',
-        url: '/testRoute/' + testdataID,
+        url: '/foodRoute/' + testdataID,
         data: testdata,
         success: function() {
             console.log('DELETED ITEM: ID:', testdataID);
@@ -65,7 +65,7 @@ function deleteData() {
 
 
 
-//UPDATE DATA IN DB
+//UPDATE DATA IN DD FOODBASE
 function updateData() {
     var testdata = {};
     //goes into data table to grab all data within.
@@ -74,17 +74,17 @@ function updateData() {
         testdata[field.name] = field.value;
 
         //CHECK FOR INT IF INPUTING NUM:
-        checkNumInField(field, "item_amount");
+        checkNumInField(field, "food_amount");
     });
     console.log("updateData searches through:", testdata);
 
     //finds updateButton's appened id refrencing rowValue.id
     var testdataID = $(this).parent().attr('id');
-    var c = confirm("Are you sure you want to update this?\n\n" + testdata.item_name);
+    var c = confirm("Are you sure you want to update this?\n\n" + testdata.food_name);
     if (c == true) {
     $.ajax({
         type: 'PUT',
-        url: '/testRoute/' + testdataID,
+        url: '/foodRoute/' + testdataID,
         data: testdata,
         success: function() {
             console.log("/PUT ran success", testdata);
@@ -114,7 +114,7 @@ function postData() {
 
     $.ajax({
         type: 'POST',
-        url: '/testRoute',
+        url: '/foodRoute',
         data: testdata,
         success: function() {
             console.log('/POST success function ran', testdata);
@@ -142,7 +142,7 @@ function postData() {
 function getData() {
     $.ajax({
         type: 'GET',
-        url: '/testRoute',
+        url: '/foodRoute',
         success: function(data) {
             console.log('/GET success function ran', data);
             buildTableHeader(['Item Date', 'Item Name', 'Item Amount', 'Item Place'], ['itemDateHeader', 'itemNameHeader', 'itemAmountHeader', 'itemPlaceHeader']);
@@ -150,7 +150,7 @@ function getData() {
             data.forEach(function(rowData, i) {
                 var $el = $('<div class="itemDataRow" id="' + rowData.id + '"></div>');
 
-                var dataTable = ['item_date', 'item_name', 'item_amount', 'item_place'];
+                var dataTable = ['food_date', 'food_name', 'food_amount', 'food_place'];
                 dataTable.forEach(function(property) {
                     var $input = $('<input type="text" id="' + property + '"name="' + property + '" />');
                     $input.val(rowData[property]);
@@ -165,7 +165,7 @@ function getData() {
             });
 
             // get date format to mm/dd/yy
-            var dateValues = $("#dataTable").find(".itemDataRow").find("#item_date");
+            var dateValues = $("#dataTable").find(".itemDataRow").find("#food_date");
             for (var i = 0; i < dateValues.length; i++) {
               var dateStr = dateValues[i].value;
               let year = dateStr.substring(2,4);

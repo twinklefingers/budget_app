@@ -25,8 +25,8 @@ console.log(testModule.test("app.js: testing module connection"));
 
 
 //routes
-var testRoute = require("./routes/testRoute.js");
-app.use('/testRoute', testRoute);
+var foodRoute = require("./routes/foodRoute.js");
+app.use('/foodRoute', foodRoute);
 
 
 app.get('/*', function(req, res) {

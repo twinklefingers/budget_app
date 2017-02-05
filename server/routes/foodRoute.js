@@ -1,4 +1,4 @@
-//TODO: check connectionString and change /omicron to your db you made the testbase DB in postgres
+//TODO: check connectionString and change /omicron to your db you made the foodbase DB in postgres
 
 var express = require('express');
 var router = express.Router();
@@ -8,7 +8,7 @@ var connectionString = 'postgres://localhost:5432/omicron';
 
 //modules
 var testModule = require('../modules/testModule.js');
-console.log(testModule.test("\n\n\n\ntestRoute.js: testing module connection"));
+console.log(testModule.test("\n\n\n\nfoodRoute.js: testing module connection"));
 
 
 //AJAX requests:
@@ -25,7 +25,7 @@ router.delete('/:id', function(req, res) {
 
         //To manage strings and refrences cleaner
         var refrenceValues = [id];
-        var queryString = 'DELETE FROM testbase WHERE id = $1';
+        var queryString = 'DELETE FROM foodbase WHERE id = $1';
 
         client.query(queryString, refrenceValues,
             function(err, result) {
@@ -54,7 +54,7 @@ router.get('/', function(req, res) {
         //To manage strings and refrences cleaner
         // might eventually want to order by DESC so that new items show up at top of table
         // to_char(item_date,'mm/dd/yy') AS item_date
-        var queryStringGET = 'SELECT * FROM testbase ORDER BY id ASC';
+        var queryStringGET = 'SELECT * FROM foodbase ORDER BY id ASC';
 
         client.query(queryStringGET,
             function(err, result) {
@@ -86,7 +86,7 @@ router.post('/', function(req, res) {
         }
 
         //To manage strings and refrences cleaner
-        var queryString = 'INSERT INTO testbase (item_date, item_name, item_amount, item_place, item_category) VALUES ($1, $2, $3, $4, $5)';
+        var queryString = 'INSERT INTO foodbase (food_date, food_name, food_amount, food_place, food_category) VALUES ($1, $2, $3, $4, $5)';
         var refrenceValues = [item.item_date, item.item_name, (item.item_amount), item.item_place, item.item_category];
 
 
@@ -123,8 +123,8 @@ router.put('/:id', function(req, res) {
         }
 
         //To manage strings and refrences cleaner
-        var queryString = 'UPDATE testbase SET item_date = $1, item_name = $2, item_amount = $3, item_place = $4 WHERE id = $5';
-        var refrenceValues = [rowValue.item_date, rowValue.item_name, rowValue.item_amount, rowValue.item_place, id];
+        var queryString = 'UPDATE foodbase SET food_date = $1, food_name = $2, food_amount = $3, food_place = $4 WHERE id = $5';
+        var refrenceValues = [rowValue.food_date, rowValue.food_name, rowValue.food_amount, rowValue.food_place, id];
 
         client.query(queryString, refrenceValues,
 
