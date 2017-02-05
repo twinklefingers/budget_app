@@ -147,27 +147,19 @@ function getData() {
                 $el.append('<button id=' + rowData.id + ' class="update">Update</button>');
                 $el.append('<button id=' + rowData.id + ' class="delete">Delete</button>');
 
-
-
-                // get date format to mm/dd/yy
-                let str = "2015-01-01T01:01:00.01"
-
-let year = str.substring(0,4)
-let month = str.substring(5,7)
-let day = str.substring(8,10)
-
-console.log('year: ', year)
-console.log('month: ', month)
-console.log('day: ', day)
-                // $('#dataTable').find("#item_date").val($.format.date(new Date().toJSON().substring(0,10)));
-                // var theDate = $("#item_date").val();
-                //.slice()
-                // console.log("item_date", theDate);
-
-
-
                 $('#dataTable').append($el);
             });
+
+            // get date format to mm/dd/yy
+            var dateValues = $("#dataTable").find(".itemDataRow").find("#item_date");
+            for (var i = 0; i < dateValues.length; i++) {
+              var dateStr = dateValues[i].value;
+              let year = dateStr.substring(2,4);
+              let month = dateStr.substring(5,7);
+              let day = dateStr.substring(8,10);
+              newDate = month + "/" + day + "/" + year;
+              dateValues[i].value = newDate;
+            }
         },
 
         error: function(response) {

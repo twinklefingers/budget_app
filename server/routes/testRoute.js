@@ -20,7 +20,7 @@ router.delete('/:id', function(req, res) {
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             res.sendStatus(500);
-            console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in DELTE, pg.connect\n", err, "\n \n \n \n");
+            console.log("\n \n \n \n!!!HEY ERROR CONSOLE LOG HERE!!!\n error in DELETE, pg.connect\n", err, "\n \n \n \n");
         }
 
         //To manage strings and refrences cleaner
