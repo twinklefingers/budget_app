@@ -16,11 +16,12 @@
 </head>
 
 <body>
-    <h1>Budget</h1>
+    <h1>Food</h1>
     <ul>
         <li>fill out the form completely</li>
         <li>be sure the date input is filled out with some valid date format</li>
         <li>the amount field must be a number, can be a decimal number, but should not contain the $ symbol</li>
+        <li>soon to have budget features, possibly sleep/exercise features</li>
     </ul>
 
 
@@ -38,6 +39,17 @@
             </div>
             <div class="form-group">
                 <input type="text" id="item_placeForm" name="item_place" class="form-control" placeholder="place" />
+            </div>
+            <div class="form-group">
+              <select class="selectpicker form-control" name="item_category">
+                <option value="unselected">choose category</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="light">Light</option>
+                <option value="heavy">Heavy</option>
+                <option value="side">Side</option>
+                <option value="dessert">Dessert</option>
+                <option value="restaurant">Restaurant</option>
+              </select>
             </div>
             <button type="submit" id="submitTestData">Enter</button>
             <button id="btnTest">Test Button</button>

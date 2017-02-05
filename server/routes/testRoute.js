@@ -86,8 +86,8 @@ router.post('/', function(req, res) {
         }
 
         //To manage strings and refrences cleaner
-        var queryString = 'INSERT INTO testbase (item_date, item_name, item_amount, item_place) VALUES ($1, $2, $3, $4)';
-        var refrenceValues = [item.item_date, item.item_name, (item.item_amount), item.item_place];
+        var queryString = 'INSERT INTO testbase (item_date, item_name, item_amount, item_place, item_category) VALUES ($1, $2, $3, $4, $5)';
+        var refrenceValues = [item.item_date, item.item_name, (item.item_amount), item.item_place, item.item_category];
 
 
         client.query(queryString, refrenceValues,

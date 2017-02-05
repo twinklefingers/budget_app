@@ -98,9 +98,7 @@ function updateData() {
 // POST DATA TO DB
 function postData() {
     event.preventDefault();
-
     var testdata = {};
-
     $.each($('#dataForm').serializeArray(), function(i, field) {
         testdata[field.name] = field.value;
         checkNumInField(field, "item_amount");
