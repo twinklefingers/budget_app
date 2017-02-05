@@ -8,6 +8,7 @@
 
     <script type="text/javascript" src="./vendors/jquery.min.js"></script>
     <script type="text/javascript" src="./vendors/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./vendors/underscore-min.js"></script>
     <script type="text/javascript" src="./scripts/clientapp.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./vendors/bootstrap.min.css">
@@ -16,16 +17,83 @@
 </head>
 
 <body>
-    <h1>Food</h1>
+    <h1>Budget</h1>
     <ul>
         <li>fill out the form completely</li>
         <li>be sure the date input is filled out with some valid date format</li>
         <li>the amount field must be a number, can be a decimal number, but should not contain the $ symbol</li>
         <li>soon to have budget features, possibly sleep/exercise features</li>
     </ul>
+    <button class="btn btn-secondary" id="btnTest" style="width:100%;text-align:center;">Test Button</button>
 
 
-    <!-- **************- INPUT form for PUT request to testbase db -**************-->
+
+    <!-- **************- Budget Form -**************-->
+    <p style="text-decoration:underline;">Income:</p>
+    <div class="dataInputForm">
+        <form id="">
+            <div class="form-group">
+                <input type="text" id="item_dateForm" name="item_date" class="form-control" placeholder="date" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="item_nameForm" name="item_name" class="form-control" placeholder="description" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="item_amountForm" name="item_amount" class="form-control" placeholder="amount" />
+            </div>
+            <button type="submit" id="" class="btn btn-success">Enter</button>
+        </form>
+    </div>
+
+    <p style="text-decoration:underline;">Expenses:</p>
+    <div class="dataInputForm">
+        <form id="">
+            <div class="form-group">
+                <input type="text" id="item_dateForm" name="item_date" class="form-control" placeholder="date" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="item_nameForm" name="item_name" class="form-control" placeholder="description" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="item_amountForm" name="item_amount" class="form-control" placeholder="amount" />
+            </div>
+            <div class="form-group">
+              <select class="selectpicker form-control" name="item_category">
+                <option value="unselected">choose category</option>
+                <option value="personal">Personal</option>
+                <option value="food">Food</option>
+                <option value="utilities">Utilities</option>
+                <option value="gas">Gas</option>
+                <option value="rent">Rent</option>
+                <option value="household">Household</option>
+                <option value="bills">Bills/Loans</option>
+                <option value="savings">Savings</option>
+              </select>
+            </div>
+            <button type="submit" id="" class="btn btn-success">Enter</button>
+        </form>
+    </div>
+
+    <!-- ********************- Nav for Expense Categories -********************-->
+    <div class="btnFoodCategoryContainer">
+      <button id="budgetCategoryAll" class="btn btn-secondary btnFoodCategory" type="button" name="button">All</button>
+      <button id="budgetCategoryPersonal" class="btn btn-secondary btnFoodCategory" type="button" name="button">Personal</button>
+      <button id="budgetCategoryFood" class="btn btnFoodCategory" type="button" name="button">Food</button>
+      <button id="budgetCategoryUtilities" class="btn btnFoodCategory" type="button" name="button">Utilities</button>
+      <button id="budgetCategoryGas" class="btn btnFoodCategory" type="button" name="button">Gas</button>
+      <button id="budgetCategoryRent" class="btn btnFoodCategory" type="button" name="button">Rent</button>
+      <button id="budgetCategoryHousehold" class="btn btnFoodCategory" type="button" name="button">Household</button>
+      <button id="budgetCategoryBills" class="btn btnFoodCategory" type="button" name="button">Bills/Loans</button>
+      <button id="budgetCategorySavings" class="btn btnFoodCategory" type="button" name="button">Savings</button>
+    </div>
+
+    <!-- ********************- Div to hold budget data -********************-->
+    <div id="dataTableBudget">
+
+    </div>
+<hr />
+    <!-- **************- Food Form -**************-->
+    <h1>Food</h1>
     <div class="dataInputForm">
         <form id="dataForm">
             <div class="form-group">
@@ -47,16 +115,31 @@
                 <option value="light">Light</option>
                 <option value="heavy">Heavy</option>
                 <option value="side">Side</option>
-                <option value="dessert">Dessert</option>
+                <option value="snack">Snack</option>
+                <option value="ingredient">Ingredient</option>
                 <option value="restaurant">Restaurant</option>
               </select>
             </div>
-            <button type="submit" id="submitTestData">Enter</button>
-            <button id="btnTest">Test Button</button>
+            <button type="submit" id="submitTestData" class="btn btn-success">Enter</button>
         </form>
     </div>
 
-    <!-- ********************- Div to hold data -********************-->
+
+    <!-- ********************- Nav for Food Categories -********************-->
+    <div class="btnFoodCategoryContainer">
+      <button id="foodCategoryAll" class="btn btn-secondary btnFoodCategory" type="button" name="button">All</button>
+      <button id="foodCategoryBreakfast" class="btn btn-secondary btnFoodCategory" type="button" name="button">Breakfast</button>
+      <button id="foodCategoryLight" class="btn btnFoodCategory" type="button" name="button">Light</button>
+      <button id="foodCategoryHeavy" class="btn btnFoodCategory" type="button" name="button">Heavy</button>
+      <button id="foodCategorySide" class="btn btnFoodCategory" type="button" name="button">Side</button>
+      <button id="foodCategoryDessert" class="btn btnFoodCategory" type="button" name="button">Dessert</button>
+      <button id="foodCategorySnack" class="btn btnFoodCategory" type="button" name="button">Snack</button>
+      <button id="foodCategoryIngredient" class="btn btnFoodCategory" type="button" name="button">Ingredient</button>
+      <button id="foodCategoryRestuarant" class="btn btnFoodCategory" type="button" name="button">Restaurant</button>
+    </div>
+
+
+    <!-- ********************- Div to hold food data -********************-->
     <div id="dataTable">
 
     </div>

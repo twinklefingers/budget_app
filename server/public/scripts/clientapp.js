@@ -2,7 +2,6 @@ $(document).ready(function() {
     getData();
 
 
-
     //button listeners
     $('#dataForm').on("click", ".item_place", pressEnter);
     $('#submitTestData').on("click", postData);
@@ -12,10 +11,19 @@ $(document).ready(function() {
 
     $('#btnTest').on("click", sort);
 
+    // sort nav
     $('#dataTable').on("click", "#itemDateHeader", sort);
     $('#dataTable').on("click", "#itemNameHeader", sort);
     $('#dataTable').on("click", "#itemAmountHeader", sort);
     $('#dataTable').on("click", "#itemPlaceHeader", sort);
+
+    // Food Menu Nav
+    $('#foodCategoryBreakfast').on("click", sort);
+    $('#foodCategoryLight').on("click", sort);
+    $('#foodCategoryHeavy').on("click", sort);
+    $('#foodCategorySide').on("click", sort);
+    $('#foodCategoryDessert').on("click", sort);
+    $('#foodCategoryRestaurant').on("click", sort);
 
 });
 
@@ -43,7 +51,7 @@ function deleteData() {
             getData();
         },
         error: function() {
-            console.log("error in delete");
+            console.log("error in delete", error);
         }
     });
   }
@@ -150,8 +158,8 @@ function getData() {
 
                 });
 
-                $el.append('<button id=' + rowData.id + ' class="update">Update</button>');
-                $el.append('<button id=' + rowData.id + ' class="delete">Delete</button>');
+                $el.append('<button id=' + rowData.id + ' class="btn update">Update</button>');
+                $el.append('<button id=' + rowData.id + ' class="btn delete">Delete</button>');
 
                 $('#dataTable').append($el);
             });
@@ -172,7 +180,6 @@ function getData() {
             console.log('GET /testRoute fail. No data could be retrieved!', response);
         },
     });
-
 }
 
 
