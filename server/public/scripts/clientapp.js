@@ -133,7 +133,7 @@ function getData() {
             buildTableHeader(['Item Date', 'Item Name', 'Item Amount', 'Item Place'], ['itemDateHeader', 'itemNameHeader', 'itemAmountHeader', 'itemPlaceHeader']);
 
             data.forEach(function(rowData, i) {
-                var $el = $('<div id="' + rowData.id + '"></div>');
+                var $el = $('<div class="itemDataRow" id="' + rowData.id + '"></div>');
 
                 var dataTable = ['item_date', 'item_name', 'item_amount', 'item_place'];
                 dataTable.forEach(function(property) {
@@ -150,6 +150,15 @@ function getData() {
 
 
                 // get date format to mm/dd/yy
+                let str = "2015-01-01T01:01:00.01"
+
+let year = str.substring(0,4)
+let month = str.substring(5,7)
+let day = str.substring(8,10)
+
+console.log('year: ', year)
+console.log('month: ', month)
+console.log('day: ', day)
                 // $('#dataTable').find("#item_date").val($.format.date(new Date().toJSON().substring(0,10)));
                 // var theDate = $("#item_date").val();
                 //.slice()
@@ -212,8 +221,22 @@ function pressEnter(pressEnterOn) {
     });
 }
 
-function sort(d) {
+function sort(e) {
     event.preventDefault();
-    console.log("alive");
+    console.log("alive", e.target);
+    var nameToSort = $("#dataTable").find(".itemDataRow").find("#item_name");
+    // var test = $("#item_name");
+    // console.log("test",test);
+    // console.log(nameToSort);
+    nameArray = [];
 
+    for (var i = 0; i < nameToSort.length; i++) {
+      // console.log(nameToSort[i].value);
+      sortedName = nameToSort[i].value;
+      nameArray.push(sortedName);
+    }
+    console.log(nameArray);
+    console.log(nameArray.sort());
+    sortedNameArray = nameArray.sort();
+    $("#dataTable").find(".itemDataRow").html(sortedNameArray);
 }
