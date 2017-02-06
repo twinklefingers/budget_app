@@ -10,5 +10,5 @@ Main Testing Browser: Chrome
 
 Original BuildTemplate by Drew Wiskus @andrewwiskus - https://github.com/andrewwiskus/chestnut
 
-![alt tag](./server/public/img/sshot1.png)
-![alt tag](./server/public/img/sshot2.png)
+![alt tag](./server/public/imgs/sshot1.png)
+![alt tag](./server/public/imgs/sshot2.png)
