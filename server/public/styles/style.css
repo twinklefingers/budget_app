@@ -5,13 +5,21 @@ html, body {
     padding: 0;
 }
 
-#dataForm, #dataTable {
+#dataForm, #dataFormBudget, #dataFormExpenses, #dataTable, #dataTableBudget {
     padding: 3% 0;
     width: 80%;
     margin: 0 auto;
 }
 
+#dataForm, #dataFormBudget, #dataFormExpenses {
+    text-align: center;
+}
+
 #dataForm button {
+    width: 9.8%;
+}
+
+#dataFormBudget button, #dataFormExpenses button {
     width: 9.8%;
 }
 
@@ -19,15 +27,34 @@ html, body {
     width: 20%;
 }
 
+#dataTableBudget input {
+    width: 20%;
+}
+
 #dataTable button {
     width: 9.8%;
-    height:25px;
+    height: 25px;
+    margin: .1%;
+    padding: 0;
+    vertical-align: bottom;
+}
+
+#dataTableBudget button {
+    width: 9.8%;
+    height: 25px;
     margin: .1%;
     padding: 0;
     vertical-align: bottom;
 }
 
 #dataTableHead * {
+    font-style: italic;
+    background-color: seagreen;
+    color: white;
+    text-transform: uppercase;
+}
+
+#dataTableHeadBudget * {
     font-style: italic;
     background-color: seagreen;
     color: white;

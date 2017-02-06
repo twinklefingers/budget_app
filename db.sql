@@ -7,11 +7,11 @@ CREATE TABLE foodbase (
     food_category text
 );
 
-CREATE TABLE testbase (
+CREATE TABLE budgetbase (
     id SERIAL PRIMARY KEY,
-    item_date date,
-    item_name character varying(100),
-    item_amount double precision,
-    item_place character varying(50),
-    item_category text
+    budget_date date,
+    budget_name character varying(100),
+    budget_expense double precision,
+    budget_income double precision,
+    budget_category text
 );

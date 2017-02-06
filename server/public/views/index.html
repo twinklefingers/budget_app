@@ -22,6 +22,7 @@
         <li>fill out the form completely</li>
         <li>be sure the date input is filled out with some valid date format</li>
         <li>the amount field must be a number, can be a decimal number, but should not contain the $ symbol</li>
+        <li>when updating budget table, fill out number for each field, even if it is zero (0)</li>
         <li>soon to have budget features, possibly sleep/exercise features</li>
     </ul>
     <button class="btn btn-secondary" id="btnTest" style="width:100%;text-align:center;">Test Button</button>
@@ -29,36 +30,34 @@
 
 
     <!-- **************- Budget Form -**************-->
-    <p style="text-decoration:underline;">Income:</p>
     <div class="dataInputForm">
-        <form id="">
+        <form id="dataFormBudget">
             <div class="form-group">
-                <input type="text" id="item_dateForm" name="item_date" class="form-control" placeholder="date" />
+                <input type="text" id="item_dateForm" name="budget_date" class="form-control" placeholder="date" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_nameForm" name="item_name" class="form-control" placeholder="description" />
+                <input type="text" id="item_nameForm" name="budget_name" class="form-control" placeholder="description" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_amountForm" name="item_amount" class="form-control" placeholder="amount" />
+                <input type="text" id="item_amountForm" name="budget_income" class="form-control" placeholder="income" />
             </div>
-            <button type="submit" id="" class="btn btn-success">Enter</button>
+            <button type="submit" id="submitIncome" class="btn btn-success">Enter</button>
         </form>
     </div>
 
-    <p style="text-decoration:underline;">Expenses:</p>
     <div class="dataInputForm">
-        <form id="">
+        <form id="dataFormExpenses">
             <div class="form-group">
-                <input type="text" id="item_dateForm" name="item_date" class="form-control" placeholder="date" />
+                <input type="text" id="item_dateForm" name="budget_date" class="form-control" placeholder="date" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_nameForm" name="item_name" class="form-control" placeholder="description" />
+                <input type="text" id="item_nameForm" name="budget_name" class="form-control" placeholder="description" />
             </div>
             <div class="form-group">
-                <input type="text" id="item_amountForm" name="item_amount" class="form-control" placeholder="amount" />
+                <input type="text" id="item_amountForm" name="budget_expense" class="form-control" placeholder="expense" />
             </div>
             <div class="form-group">
-              <select class="selectpicker form-control" name="item_category">
+              <select class="selectpicker form-control" name="budget_category">
                 <option value="unselected">choose category</option>
                 <option value="personal">Personal</option>
                 <option value="food">Food</option>
@@ -70,7 +69,7 @@
                 <option value="savings">Savings</option>
               </select>
             </div>
-            <button type="submit" id="" class="btn btn-success">Enter</button>
+            <button type="submit" id="submitExpense" class="btn btn-success">Enter</button>
         </form>
     </div>
 
