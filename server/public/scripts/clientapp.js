@@ -193,7 +193,7 @@ function getBudgetData() {
             buildTableHeaderBudget(['Item Date', 'Item Name', 'Expense', 'Income'], ['itemDateHeaderBudget', 'itemNameHeaderBudget', 'itemAmountHeaderBudget', 'itemPlaceHeaderBudget']);
 
             data.forEach(function(rowData, i) {
-                var $el = $('<div class="itemDataRow" id="' + rowData.id + '"></div>');
+                var $el = $('<div class="itemDataRowBudget" id="' + rowData.id + '"></div>');
 
                 var dataTableBudget = ['budget_date', 'budget_name', 'budget_expense', 'budget_income'];
                 dataTableBudget.forEach(function(property) {
@@ -210,7 +210,7 @@ function getBudgetData() {
             });
 
             // get date format to mm/dd/yy
-            var dateValues = $("#dataTableBudget").find(".itemDataRow").find("#budget_date");
+            var dateValues = $("#dataTableBudget").find(".itemDataRowBudget").find("#budget_date");
             for (var i = 0; i < dateValues.length; i++) {
               var dateStr = dateValues[i].value;
               let year = dateStr.substring(2,4);
@@ -359,7 +359,8 @@ function getData() {
 
                 var dataTable = ['food_date', 'food_name', 'food_amount', 'food_place'];
                 dataTable.forEach(function(property) {
-                    var $input = $('<input type="text" id="' + property + '"name="' + property + '" />');
+                  console.log(rowData);
+                    var $input = $('<input type="text" id="' + property + '"name="' + rowData.food_name + '" />');
                     $input.val(rowData[property]);
                     $el.append($input);
 
@@ -443,13 +444,15 @@ function pressEnter(pressEnterOn) {
 function sort(e) {
     event.preventDefault();
     console.log("alive", e.target);
-    var nameToSort = $("#dataTable").find(".itemDataRow").find("#item_name");
+    var $itemDataRow = $("#dataTable").find(".itemDataRow")
+    var nameToSort = $itemDataRow.find("#food_name");
+    // console.log($itemDataRow);
     // var test = $("#item_name");
     // console.log("test",test);
     // console.log(nameToSort);
     nameArray = [];
 
-    for (var i = 0; i < nameToSort.length; i++) {
+    for (var i = 0; i < $itemDataRow.length; i++) {
       // console.log(nameToSort[i].value);
       sortedName = nameToSort[i].value;
       nameArray.push(sortedName);
@@ -457,5 +460,38 @@ function sort(e) {
     console.log(nameArray);
     console.log(nameArray.sort());
     sortedNameArray = nameArray.sort();
-    $("#dataTable").find(".itemDataRow").html(sortedNameArray);
+
+
+
+//     $itemDataRow.sort(function (a, b) {
+//   return a.children.getElementById("food_name") - b.children.getElementById("food_name");
+// });
+
+
+
+    // for (var i = 0; i < nameToSort.length; i++) {
+    // $("#dataTable").find(".itemDataRow").find('input').attr("text", sortedNameArray[i]);
+    // }
+
+
+
+    // var divList = $(".itemDataRow");
+    // divList.sort(function(a, b){
+    //   for (var i = 0; i < $itemDataRow.length; i++) {
+    //     return $(a).find("#food_name")-$(b).find("#food_name")
+    //   }
+    // });
+    // $("#dataTable").html(divList);
+
+
+
+//     function sortUsingNestedText(parent, childSelector, keySelector) {
+//         var items = parent.children(childSelector).sort(function(a, b) {
+//             var vA = $(keySelector, a).value;
+//             var vB = $(keySelector, b).value;
+//             return (vA < vB) ? -1 : (vA > vB) ? 1 : 0;
+//         });
+//         parent.append(items);
+//     }
+// sortUsingNestedText($('#dataTable'), ".itemDataRow", "#food_name");
 }
